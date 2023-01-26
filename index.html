@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random Meal Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+
+  <body>
+  <section class="section" id="initialHeader">
+    <div class="container">
+      <h1 class="title">
+        Random Meal Generator
+      </h1>
+      <p class="subtitle">
+        Enter your personal information to get a <strong>Random Meal</strong>!
+      </p>
+    </div>
+  </section>
+  <section class="section" id="finalHeader" style="display: none;">
+    <div class="container">
+      <h1 class="title">
+        Random Meal Generator
+      </h1>
+      <p class="subtitle">
+        We hope you enjoy your <strong>Random Meal</strong>!
+      </p>
+    </div>
+  </section>
+  
+  <section class="container" id="firstPage">
+    <!-- creates text input field for Name -->
+    <div class="field" id="UserName">
+        <label class="label">Name</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="Randy Randleman"></textarea>
+        </div>
+    </div>
+
+    <!-- creates text input field for Age -->
+    <div class="field" id="UserAge">
+        <label class="label">Age</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="74"></textarea>
+        </div>
+    </div>
+
+    <!-- creates text input field for Height -->
+    <div class="field" id="UserHeight">
+        <label class="label">Height</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="6'4"></textarea>
+        </div>
+    </div>
+
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserCurrentWeight">
+        <label class="label">Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="285"></textarea>
+        </div>
+    </div>
+
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserIdealWeight">
+        <label class="label">Ideal Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="240"></textarea>
+        </div>
+    </div>
+
+    <!-- creates dropdown menu for Gender -->
+    <div class="field" id="UserGender">
+        <label class="label">Select Gender</label>
+        <div class="control">
+        <div class="select">
+            <select>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+                <option value="nonbinary">Non-Binary</option>
+                <option value="transman">Trans Man</option>
+                <option value="transwoman">Trans Woman</option>
+            </select>
+        </div>
+        </div>
+    </div>
+
+    <!-- creates buttons for Submit and for Cancel -->
+    <div class="field is-grouped">
+        <div class="control">
+        <button class="button is-link SubmitBtn">Submit</button>
+        </div>
+        <div class="control">
+        <button class="button is-link is-light CancelBtn">Cancel</button>
+        </div>
+    </div>
+  </section>
+
+  <section class="container" id="secondPage" style="display: none;">
+    <!-- creates input for which meal of the day, probably drop down menu -->
+    <div class="field" id="UserMeal">
+      <label class="label">Select Meal Type</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="breakfast">Breakfast</option>
+              <option value="main course">Lunch</option>
+              <option value="main course">Dinner</option>
+              <option value="appetizer">Appetizer</option>
+              <option value="side dish">Side Dish</option>
+              <option value="dessert">Dessert</option>
+              <option value="drink">Drink</option>
+          </select>
+      </div>
+      </div>
+    </div>    
+    <!-- creates input for which cuisine, probably text area -->
+    <div class="field" id="UserCuisine">
+      <label class="label">What kind of food would you like?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="chinese"></textarea>
+      </div>
+    </div>
+    <!-- creates input for ingredients, probably text area -->
+    <div class="field" id="UserIngredients">
+      <label class="label">Do you have any ingredients you'd like to use?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="lettuce,tomato,onion"></textarea>
+      </div>
+    </div>
+    <!-- creates input for specific diets, probably drop down menu -->
+    <div class="field" id="UserDiet">
+      <label class="label">Do you follow a specific Diet?</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="nodiet">No Diet</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="pescatarian">Pescatarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="paleo">Paleo</option>
+              <option value="primal">Primal</option>
+          </select>
+      </div>
+      </div>
+    </div>
+    <!-- creates input for dietary restrictions/allergies, probably text area -->
+    <div class="field" id="UserAllergies">
+      <label class="label">Do you have any dietary restrictions or allergies?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="shellfish,gluten"></textarea>
+      </div>
+    </div>
+    <!-- creates input for nutritional info, hopefully a check list -->
+    <div class="field" id="UserNutrition">
+      <label class="label">Do you have any specifications for the nutritional content of your meal?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="low-fat,high-protein"></textarea>
+      </div>
+    </div>
+    <!-- creates buttons for Submit and for Cancel -->
+    <div class="field is-grouped">
+      <div class="control">
+      <button class="button is-link SecondSubmitBtn">Submit</button>
+      </div>
+      <div class="control">
+      <button class="button is-link is-light SecondCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="thirdPage" style="display: none;">
+    <div class="field" id="whatever">
+      <label class="label">This is a placeholder for a real 4th page!</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="shit ain't that serious"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets/script.js"></script>
+  </body>
+
+</html>
