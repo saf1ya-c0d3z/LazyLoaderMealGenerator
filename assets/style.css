@@ -1,0 +1,58 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+.control {
+   
+}
+#initialHeader{
+    background: #F9F7F3 ;
+    
+
+}
+
+.container {
+    background: #F9F7F3 ;
+    background-color: transparent;
+}
+
+body {
+    background: #F9F7F3  
+}
+
+.title {
+    font-family: 'Aboreto', cursive;
+font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    padding-top: 35px;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    right: 53px;
+    width: 1300px;
+    bottom: 50px;
+    height: 65px;
+    justify-content: center;
+}
+
+.button.is-link {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #F7A072;
+   
+  }
+
+  .button.is-link:hover {
+    background-color: #dcc0e6 !important; 
+    color: white;
+  }
+
+  #whisp {
+    position: fixed;
+    opacity: 0.4;
+  }
+
+  .subtitle {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
