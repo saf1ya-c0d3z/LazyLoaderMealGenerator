@@ -106,10 +106,10 @@
       <div class="select">
           <select>
               <option value="breakfast">Breakfast</option>
-              <option value="main course">Lunch</option>
-              <option value="main course">Dinner</option>
+              <option value="main%20course">Lunch</option>
+              <option value="main%20course">Dinner</option>
               <option value="appetizer">Appetizer</option>
-              <option value="side dish">Side Dish</option>
+              <option value="side%20dish">Side Dish</option>
               <option value="dessert">Dessert</option>
               <option value="drink">Drink</option>
           </select>
@@ -154,10 +154,27 @@
       </div>
     </div>
     <!-- creates input for nutritional info, hopefully a check list -->
-    <div class="field" id="UserNutrition">
+    <!-- <div class="field" id="UserNutrition">
       <label class="label">Do you have any specifications for the nutritional content of your meal?</label>
       <div class="control">
           <textarea class="input" rows="3" placeholder="low-fat,high-protein"></textarea>
+      </div>
+    </div> -->
+    <div class="field" id="UserNutrition">
+      <label class="label">Do you have any specification for the nutritional content of your meal?</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="nospecification">No Specifications</option>
+              <option value="low-sodium">Low Sodium</option>
+              <option value="low-fat">Low Fat</option>
+              <option value="low-sugar">Low Sugar</option>
+              <option value="nosugar">Sugar Free</option>
+              <option value="high-protein">High Protein</option>
+              <option value="low-carb">Low Carb</option>
+              <option value="keto">Ketogenic</option>
+          </select>
+      </div>
       </div>
     </div>
     <!-- creates buttons for Submit and for Cancel -->

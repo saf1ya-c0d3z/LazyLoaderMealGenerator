@@ -32,6 +32,14 @@ $(".SubmitBtn").click(function () {
     gotoSecondPage();
 });
 
+$(".CancelBtn").click(function () {
+    $(this).closest('.container').find('#UserName').find('textarea').val("");
+    $(this).closest('.container').find('#UserAge').find('textarea').val("");
+    $(this).closest('.container').find('#UserHeight').find('textarea').val("");
+    $(this).closest('.container').find('#UserCurrentWeight').find('textarea').val("");
+    $(this).closest('.container').find('#UserIdealWeight').find('textarea').val("");
+});
+
 $(".SecondSubmitBtn").click(function () {
     var userInfo = [];
     var userInfo = JSON.parse(localStorage.getItem("Extended User Info"));
@@ -47,14 +55,52 @@ $(".SecondSubmitBtn").click(function () {
     console.log(yourName + " abides by a " + yourDiet + " diet.");
     var yourAllergies = $(this).closest('.container').find('#UserAllergies').find('textarea').val();
     console.log(yourName + " is allergic to " + yourAllergies + "!");
-    var yourNutrition = $(this).closest('.container').find('#UserNutrition').find('textarea').val();
+    var yourNutrition = $(this).closest('.container').find('#UserNutrition').find('select').val();
     console.log(yourName + " wants a meal that adheres to the following nutritional requirements: " + yourNutrition + ".");
-    var newInfo = [yourMeal, yourCuisine, yourIngredients, yourDiet, yourAllergies, yourNutrition];
+    
+    var newInfo = [yourMeal];
     var moreInfo = userInfo.concat(newInfo);
     localStorage.setItem("Full User Info", JSON.stringify(moreInfo));
+    var mealInfo = [yourMeal, yourCuisine, yourDiet]
+    localStorage.setItem("User Meal Info", JSON.stringify(mealInfo));
+    /* sets separate localStorage Items with any input that can have multiple things within it */
+    var ingredientInfo = yourIngredients.split(",");
+    var allergenInfo = yourAllergies.split(",");
+    /* var nutritionInfo = [yourNutrition.split(",");] */
+    var nutritionInfo = [yourNutrition];
+    /* now any localStorage Item with multiple listed things can be separated as if an array, hopefully */
+    localStorage.setItem("Ingredient List", JSON.stringify(ingredientInfo));
+    localStorage.setItem("Restriction List", JSON.stringify(allergenInfo));
+    localStorage.setItem("Nutrition List", JSON.stringify(nutritionInfo));
 
     setMealMax();
+    setMealParameters();
+    cleanSplitArrays();
+    firstAPIcall();
     gotoThirdPage();
+});
+
+$(".SecondCancelBtn").click(function () {
+    /* no need to reset the drop-down menu */
+    $(this).closest('.container').find('#UserCuisine').find('textarea').val("");
+    $(this).closest('.container').find('#UserIngredients').find('textarea').val("");
+    /* trying to reset this drop-down menu to "no diet" option */
+    $(this).closest('.container').find('#UserDiet').find('select').val("nodiet");
+    $(this).closest('.container').find('#UserAllergies').find('textarea').val("");
+    /* trying to reset this drop-down menu to "no specifications" option */
+    $(this).closest('.container').find('#UserNutrition').find('select').val("nospecification");
+    /* if cancel on secondPage, go back to firstPage and empty the "User Info" in localStorage */
+    var resetInfo = [];
+    var resetInfo = JSON.parse(localStorage.getItem("User Info"));
+    var resetInfo = [];
+    localStorage.setItem("User Info", JSON.stringify(resetInfo));
+    /* also reset the "Extended User Info" in localStorage */
+    var resetExtend = [];
+    var resetExtend = JSON.parse(localStorage.getItem("Extended User Info"));
+    var resetExtend = [];
+    localStorage.setItem("Extended User Info", JSON.stringify(resetExtend));
+
+    backtoFirstPage();
 });
 
 function setCalorieMax() {
@@ -112,13 +158,6 @@ function setCalorieMax() {
     localStorage.setItem("Extended User Info", JSON.stringify(moreInfo));
 };
 
-function gotoSecondPage() {
-    var firstPageContainer = document.getElementById("firstPage");
-    firstPageContainer.setAttribute("style", "display:none");
-    var secondPageContainer = document.getElementById("secondPage");
-    secondPageContainer.setAttribute("style", "display:block");
-};
-
 function setMealMax() {
     var userInfo = [];
     var userInfo = JSON.parse(localStorage.getItem("Full User Info"));
@@ -129,11 +168,11 @@ function setMealMax() {
 
     if (yourMeal = "breakfast") {
         mealMultiplier = 0.20;
-    } else if (yourMeal = "main course") {
+    } else if (yourMeal = "main%20course") {
         mealMultiplier = 0.25;
-    } else if (yourmeal = "appetizer") {
+    } else if (yourMeal = "appetizer") {
         mealMultiplier = 0.05;
-    } else if (yourMeal = "side dish") {
+    } else if (yourMeal = "side%20dish") {
         mealMultiplier = 0.10;
     } else if (yourMeal = "dessert") {
         mealMultiplier = 0.10;
@@ -141,14 +180,207 @@ function setMealMax() {
         mealMultiplier = 0.05;
     };
 
+    var dailySodium = 2000 * mealMultiplier;
     var minMealCalories = minCalories * mealMultiplier;
     var maxMealCalories = maxCalories * mealMultiplier;
-    var mealCalories = [minMealCalories, maxMealCalories];
+    var mealCalories = [minMealCalories, maxMealCalories, dailySodium];
     console.log("Based on your choice, your ideal calorie range for this meal is " + minMealCalories + " - " + maxMealCalories + " calories!")
-    var moreInfo = userInfo.concat(mealCalories);
-    localStorage.setItem("Fuller User Info", JSON.stringify(moreInfo));
+    
+    /* adds only to new array for singular variables that are relevant to the next bit of code */
+    var mealInfo = JSON.parse(localStorage.getItem("User Meal Info"));
+    var moreInfo = mealInfo.concat(mealCalories);
+    localStorage.setItem("User Meal Info", JSON.stringify(moreInfo));
 };
 
+function cleanSplitArrays() {
+    var userIngredients = [];
+    /* does not need a redeclaration of the var to reassign value */
+    var userIngredients = JSON.parse(localStorage.getItem("Ingredient List"));
+    userIngredients = userIngredients.map(function(ingredient) {
+        return ingredient.trim();
+    });
+    userIngredients = encodeURIComponent(userIngredients.join(", "));
+    var userRestrictions = [];
+    var userRestrictions = JSON.parse(localStorage.getItem("Restriction List"));
+    userRestrictions = userRestrictions.map(function(restriction) {
+        return restriction.trim();
+    });
+    userRestrictions = encodeURIComponent(userRestrictions.join(", "));
+    console.log(userIngredients);
+    console.log(userRestrictions);
+    localStorage.setItem("Ingredient List", userIngredients);
+    localStorage.setItem("Restriction List", userRestrictions);
+};
+
+function setMealParameters() {
+    var nutritionInfo = [];
+    var nutritionInfo = JSON.parse(localStorage.getItem("Nutrition List"));
+    /* added minMultipliers so that min # defaults to 0 */
+    var minfatMultiplier = 0.00;
+    var maxfatMultiplier = 0.0389;
+    /* make sure to go back through and remove all the SODIUM mentions, that is a request-breaking parameter and is not included in nearly any of the possible API results anyhow */
+    var maxSodium = 1;
+    var minproteinMultiplier = 0.00;
+    var maxproteinMultiplier = 0.075;
+    var minsugarMultiplier = 0.00;
+    var maxsugarMultiplier = 0.025;
+    var mincarbMultiplier = 0.00;
+    var maxcarbMultiplier = 0.0875;
+
+    /* if someone has 2000 calories per day:
+    700 fat cal, 700 carb cal inc. sugar, 600 protein cal for 2000
+    77.78g fat, 175g carb inc. sugar, 150g protein
+    0.0389 fat, .0875 carb inc. sugar, 0.075 protein
+    0.025 sugar for 50g sugar, 125g carb
+    all add up to defaults 
+     */
+
+    if (nutritionInfo == "low-fat") {
+        maxfatMultiplier = 0.03;
+    } else if (nutritionInfo == "low-sodium") {
+        maxSodium = 0.50;
+    } else if (nutritionInfo == "low-sugar") {
+        maxsugarMultiplier = .0175;
+    } else if (nutritionInfo == "nosugar") {
+        maxsugarMultiplier = 0.00;
+    } else if (nutritionInfo == "high-protein") {
+        maxproteinMultiplier = 0.10;
+    } else if (nutritionInfo == "low-carb") {
+        maxcarbMultiplier = 0.070;
+    } else if (nutritionInfo == "keto") {
+        maxsugarMultiplier = 0.01;
+        maxcarbMultiplier = 0.0263;
+        maxfatMultiplier = 0.076;
+        maxproteinMultiplier = .0527;
+    } else if (nutritionInfo == "nospecification") {    
+    };
+
+    var mealInfo = [];
+    var mealInfo = JSON.parse(localStorage.getItem("User Meal Info"));
+    var minCalories = mealInfo[3];
+    var maxCalories = mealInfo[4];
+    var mealSodium = mealInfo[5];
+
+    var minProtein = Math.round(minCalories * minproteinMultiplier);
+    var maxProtein = Math.round(maxCalories * maxproteinMultiplier);
+    var minFat = Math.round(minCalories * minfatMultiplier);
+    var maxFat = Math.round(maxCalories * maxfatMultiplier);
+    var sodiumLimit = Math.round(mealSodium * maxSodium);
+    var minCarbs = Math.round(minCalories * mincarbMultiplier);
+    var maxCarbs = Math.round(maxCalories * maxcarbMultiplier);
+    var minSugar = Math.round(minCalories * minsugarMultiplier);
+    var maxSugar = Math.round(maxCalories * maxsugarMultiplier);
+    var realminCarbs = Math.round(minCarbs - minSugar);
+    var realmaxCarbs = Math.round(maxCarbs - maxSugar);
+    /* maximize the range between minX and maxX so as to not over-narrow the search */
+    if ((realmaxCarbs - realminCarbs) < 10){
+        realminCarbs = (realmaxCarbs - 10);
+    } else if ((maxProtein - minProtein) < 10) {
+        minProtein = (maxProtein - 10);
+    } else if ((maxSugar - minSugar) < 10){
+        maxSugar = (minSugar + 10);
+    } else if ((maxFat - minFat) < 10) {
+        minFat - (maxFat - 10);
+    };
+    /* prevent any variable from becoming negative and breaking the request */
+    if (realminCarbs < 0) {
+        realminCarbs = 0;
+    } else if (minProtein < 0) {
+        minProtein = 0;
+    } else if (minFat < 0) {
+        minFat = 0;
+    };
+
+    var nutritionGrams = [minProtein, maxProtein, minFat, maxFat, realminCarbs, realmaxCarbs, minSugar, maxSugar, sodiumLimit];
+    localStorage.setItem("Nutritional Content For Meal", JSON.stringify(nutritionGrams));
+};
+
+function firstAPIcall() {
+    var mealInfo = [];
+    mealInfo = JSON.parse(localStorage.getItem("User Meal Info"));
+    var userMeal = mealInfo[0];
+    var userCuisine = mealInfo[1];
+    var userDiet = mealInfo[2];
+    /* meal variables must be multiplied to account for serving # boosting total
+    leave minX numbers alone, multiply maxX numbers by 4 for best results
+    number of servings per recipe MUST display on final page to reflect this */
+    var minCalories = mealInfo[3];
+    var maxCalories = (mealInfo[4] * 4);
+    var userIngredients = "";
+    userIngredients = localStorage.getItem("Ingredient List");
+    var userRestrictions = "";
+    userRestrictions = localStorage.getItem("Restriction List");
+    var mealNutrition = [];
+    mealNutrition = JSON.parse(localStorage.getItem("Nutritional Content For Meal"));
+    var minProtein = mealNutrition[0];
+    var maxProtein = (mealNutrition[1] * 4);
+    var minFat = mealNutrition[2];
+    var maxFat = (mealNutrition[3] * 4);
+    var minCarbs = mealNutrition[4];
+    var maxCarbs = (mealNutrition[5] * 4);
+    var minSugar = mealNutrition[6];
+    var maxSugar = (mealNutrition[7] * 4);
+    var trueNutritionInputs = [minCalories, maxCalories, minProtein, maxProtein, minFat, maxFat, minCarbs, maxCarbs, minSugar, maxSugar];
+    localStorage.setItem("API Nutrition Inputs", JSON.stringify(trueNutritionInputs));
+    /* sodium was a problem child, API's results for this request rarely have a sodium measurement */
+    /* var maxSodium = mealNutrition[8]; */
+
+    /* instructions */
+    const nutritionAPIcall = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=false&offset=0&number=5&intolerances=${userRestrictions}&maxSugar=${maxSugar}&diet=${userDiet}&ranking=1&minFat=${minFat}&addRecipeInformation=true&minSodium=0&minCalories=${minCalories}&minProtein=${minProtein}&maxProtein=${maxProtein}&minCarbs=${minCarbs}&cuisine=${userCuisine}&includeIngredients=${userIngredients}&maxCalories=${maxCalories}&minSugar=${minSugar}&type=${userMeal}&maxCarbs=${maxCarbs}&maxFat=${maxFat}`
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '297a433770msh51ab7b6b5fc5ad2p1043b5jsnc5affd639b98',
+		    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
+    };
+
+    fetch(nutritionAPIcall, options
+        ).then(response => response.json()
+        ).then(response => console.log(response)
+        ).then(json => {
+            /* still cannot get this to work! not sure what the fuck is happening */
+            for (i=0; i <= 4; i++) {
+            var recipeInfo = json;
+            var recipeName = recipeInfo.results.results[i].title;
+            var recipeURL = recipeInfo.results.results[i].sourceUrl;
+            var recipeImage = recipeInfo.results.results[i].image;
+            var recipeServings = recipeInfo.results.results[i].servings;
+            var recipeCalories = recipeInfo.results.results[i].calories;
+            var recipeCarbs = recipeInfo.results.results[i].carbs;
+            var recipeFat = recipeInfo.results.results[i].fat;
+            var recipeProtein = recipeInfo.results.results[i].protein;
+
+            var recipeStats = [recipeName, recipeURL, recipeImage, recipeServings,  recipeCalories, recipeCarbs, recipeFat, recipeProtein];
+            console.log(recipeStats);
+            localStorage.setItem(("Recipe Result Stats" + [i]), JSON.stringify(recipeStats));
+
+        }}).catch(err => console.error(err));
+};
+
+
+/* function to add when clicking the "start" or "get started" button on the landing page to go to firstPage */
+function gotoFirstPage() {
+    var landingPageContainer = document.getElementById("landingPage");
+    landingPageContainer.setAttribute("style", "display:none");
+    var firstPageContainer = document.getElementById("firstPage");
+    firstPageContainer.setAttribute("style", "display:block");
+    var landingHeaderContainer = document.getElementById("landingHeader");
+    landingHeaderContainer.setAttribute("style", "display:none");
+    var mainHeaderContainer = document.getElementById("initialHeader");
+    mainHeaderContainer.setAttribute("style", "display:block");
+};
+
+/* function to switch screen from firstPage to secondPage */
+function gotoSecondPage() {
+    var firstPageContainer = document.getElementById("firstPage");
+    firstPageContainer.setAttribute("style", "display:none");
+    var secondPageContainer = document.getElementById("secondPage");
+    secondPageContainer.setAttribute("style", "display:block");
+};
+
+/* function to switch screen from secondPage to thirdPage */
 function gotoThirdPage() {
     var secondPageContainer = document.getElementById("secondPage");
     secondPageContainer.setAttribute("style", "display:none");
@@ -160,34 +392,31 @@ function gotoThirdPage() {
     secondHeaderContainer.setAttribute("style", "display:block");
 };
 
-/* Options on THIRD PAGE will include:
-Which meal of the day is this? (breakfast, main course, etc.)
-Do you want a certain kind of food? (american, indian, asian, etc.)
-Do you have ingredients on hand you'd like to use? (onions, lettuce, beef, etc.)
-Do you abide by a specific diet? (vegetarian, vegan, pescatarian, etc.)
-Do you have any allergies or dietary restrictions? (tree nuts, shellfish, gluten, etc.)
-Do you have any preferences about nutritional content? (low-fat, no trans-fats, low-sodium, high-protein, etc.) */
+/* function should also work with the "reset"/"start over" button on the final page */
+function backtoFirstPage() {
+    var firstPageContainer = document.getElementById("firstPage");
+    firstPageContainer.setAttribute("style", "display:block");
+    var secondPageContainer = document.getElementById("secondPage");
+    secondPageContainer.setAttribute("style", "display:none");
+    var thirdPageContainer = document.getElementById("thirdPage");
+    thirdPageContainer.setAttribute("style", "display:none");
+    var mainHeaderContainer = document.getElementById("initialHeader");
+    mainHeaderContainer.setAttribute("style", "display:block");
+    var secondHeaderContainer = document.getElementById("finalHeader");
+    secondHeaderContainer.setAttribute("style", "display:none");
+};
 
-/* if "breakfast", total daily calories x .20 for max meal calories
-if "main course", total daily calories x .25 for max meal calories
-if "dessert", total daily calories x .10 for max meal calories
-if "side dish", total daily calories x .10 for max meal calories
-if "appetizer", total daily calories x .05 for max meal calories
-if "drink", total daily calories x .05 for max meal calories*/
-
-/* using the Recipe-Food-Nutrition API:
-We're going to use "GET Search Recipes Complex (Deprecated)" to return a random result
-By affixing the NUMBER parameter to "1", there will only be one resulting recipe, thus functionally RANDOM (separate from the GET Random Recipe)
-By affixing the "INSTRUCTIONS REQUIRED" parameter to "TRUE", the random results will always have the maximum amount of information on the final page
-Choice of whether "breakfast", "main course", "dessert", etc. will enter result into the "TYPE" parameter
-Same choice as above will set per-meal calorie range (calorieMin X calorieMeal - calorieMax X calorieMeal)
-Once per-meal calorie range is determined, final calorieMin and calorieMax will enter into the "minCalories" and "maxCalories" parameters, respectively
-Choice of certain kind of food will enter into the "CUISINE" paramater
-Choice of ingredients on hand will enter into the "INGREDIENTSINCLUDED" parameter
-Choice of specific diet will enter into the "DIET" parameter
-Listed allergies and dietary restrictions will enter into the "INTOLERANCES" parameter 
-Listed preferences for nutritional content will use calorieMeal to determine acceptable nutritional range per measurement
-Acceptable nutritional ranges will be entered into their respective parameters (low-fat #, as determined above, will set "maxFat" parameter, etc.)*/
+/* function to add to "new recipe" button on the final page to keep firstPage info and re-enter secondPage info */
+function backtoSecondPage() {
+    var thirdPageContainer = document.getElementById("thirdPage");
+    thirdPageContainer.setAttribute("style", "display:none");
+    var secondPageContainer = document.getElementById("secondPage");
+    secondPageContainer.setAttribute("style", "display:block");
+    var secondHeaderContainer = document.getElementById("finalHeader");
+    secondHeaderContainer.setAttribute("style", "display:none");
+    var mainHeaderContainer = document.getElementById("initialHeader");
+    mainHeaderContainer.setAttribute("style", "display:block");
+};
 
 /* So, THIRD PAGE will require a button which is able to go through and quantify all of the information gathered
 THEN sort all of that information into respective VARIABLES and ARRAYS (arrays for required questions, variables for optional ones)
@@ -207,3 +436,35 @@ It would also be really advantageous if we can include a PRINT RECIPE button on 
 BEAR IN MIND the "GET Search Recipes Complex (Deprecated)" costs 3 returns per use, and the API will charge for >50 returns per day
 BEAR IN MIND the "GET Youtube Search Results" costs 10 returns per use, and the API flat-caps at =100 returns per day (unless we can lower the results to 1 per search!)
 ALL TO SAY: we might wind up having to set a FLAT CAP of 15 test-runs per-day, per-account */
+
+/* something is causing a console ERROR here, in regards to the [i] functionality
+            either I'm running the for loop too soon (quite possible) or I'm misunderstanding how to designate a function parameter and use it to gather info from the API results */
+            /* for (i=0; i<= 4; i++) {
+                console.log(recipeInfo);
+                var recipeName = recipeInfo.results[i].title;
+                var recipeURL = recipeInfo.results[i].sourceUrl;
+                var recipeImage = recipeInfo.results[i].image;
+                var recipeServings = recipeInfo.results[i].servings;
+                var recipeCalories = recipeInfo.results[i].calories;
+                var recipeCarbs = recipeInfo.results[i].carbs;
+                var recipeFat = recipeInfo.results[i].fat;
+                var recipeProtein = recipeInfo.results[i].protein;
+                var recipeStats = [recipeName, recipeURL, recipeImage, recipeServings, recipeCalories, recipeCarbs, recipeFat, recipeProtein];
+                console.log(recipeStats);
+                localStorage.setItem(("Recipe Result Stats" + [i]), JSON.stringify(recipeStats));
+    } */
+    /* still not working even after removing from a for loop and removing all the [i] iterances from the recipeInfo function. very unsure as to what's going on here */
+    /* console.log(recipeInfo, "here!");
+    var recipeTitle = recipeInfo.title;
+    var recipeURL = recipeInfo.sourceUrl;
+    var recipeImage = recipeInfo.image;
+    var recipeServings = recipeInfo.servings;
+    var recipeInstructions = recipeInfo.analyzedInstructions[0].steps;
+    var recipeCalories = recipeInfo.calories;
+    var recipeCarbs = recipeInfo.carbs;
+    var recipeFat = recipeInfo.fat;
+    var recipeProtein = recipeInfo.protein;
+
+    var recipeStats = [recipeTitle, recipeURL, recipeImage, recipeServings, recipeInstructions, recipeCalories, recipeCarbs, recipeFat, recipeProtein];
+    console.log(recipeStats);
+    localStorage.setItem(("Recipe Result Stats" + [i]), JSON.stringify(recipeStats)); */
