@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random Meal Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Montserrat:ital,wght@1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <section>
+      <span> <img id="whisp" src="./âPngtreeânational tide purple auspicious clouds_5930606.png" alt="beautiful purple wispy cloud"></span>
+    </section>
+  <section class="section" id="initialHeader">
+    <div class="container">
+      <h1 class="title">
+        Random Meal Generator
+      </h1>
+      <p class="subtitle">
+        Enter your personal information to get a  <strong>Random Meal</strong>!
+      </p>
+    </div>
+  </section>
+  <section class="section" id="finalHeader" style="display: none;">
+    <div class="container">
+      <h1 class="title">
+        Random Meal Generator
+      </h1>
+      <p class="subtitle">
+        We hope you enjoy your  <strong>Random Meal</strong>!
+      </p>
+    </div>
+  </section>
+  <section class="container" id="firstPage">
+    <!-- creates text input field for Name -->
+    <div class="field" id="UserName">
+        <label class="label">Name</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="Randy Randleman"></textarea>
+        </div>
+    </div>
+    <!-- creates text input field for Age -->
+    <div class="field" id="UserAge">
+        <label class="label">Age</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="74"></textarea>
+        </div>
+    </div>
+    <!-- creates text input field for Height -->
+    <div class="field" id="UserHeight">
+        <label class="label">Height</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="6'4"></textarea>
+        </div>
+    </div>
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserCurrentWeight">
+        <label class="label">Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="285"></textarea>
+        </div>
+    </div>
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserIdealWeight">
+        <label class="label">Ideal Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="240"></textarea>
+        </div>
+    </div>
+    <!-- creates dropdown menu for Gender -->
+    <div class="field" id="UserGender">
+        <label class="label">Select Gender</label>
+        <div class="control">
+        <div class="select">
+            <select>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+                <option value="nonbinary">Non-Binary</option>
+                <option value="transman">Trans Man</option>
+                <option value="transwoman">Trans Woman</option>
+            </select>
+
+        </div>
+        </div>
+    </div>
