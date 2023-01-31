@@ -159,6 +159,8 @@ function gotoThirdPage() {
     secondHeaderContainer.setAttribute("style", "display:block");
 };
 
+
+
 /* Options on THIRD PAGE will include:
 Which meal of the day is this? (breakfast, main course, etc.)
 Do you want a certain kind of food? (american, indian, asian, etc.)
