@@ -1,5 +1,6 @@
 html {
-    background-image: linear-gradient(#F7D7B9, #DBBEE8);
+    background: rgb(18,117,17);
+    background: linear-gradient(149deg, rgba(18,117,17,1) 0%, rgba(193,180,165,1) 35%, rgba(48,79,107,1) 100%);
     background-repeat: no-repeat;
     background-size: cover;
     height:100%;
@@ -10,6 +11,16 @@ html {
     justify-content: center;
     display: flex;
     align-items: center;
+  }
+  .field is-grouped {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  .control {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   /* need to adjust sizing. added new pictures */
@@ -26,6 +37,7 @@ html {
   }
   #plzWork {
     position: relative;
+    height:60%;
     top: 200px;
     display: flex;
     flex-wrap: wrap;
@@ -120,12 +132,14 @@ html {
 
    #whisp {
     position: fixed;
-    opacity: 0.4;
+    opacity: 0.5;
   }
+
   
   .title {
     font-family: 'Aboreto', cursive;
-    background-image: linear-gradient(#F7D7B9, #DBBEE8);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
     /* height: 40px; */
     height: 100px;
     align-content: center;
@@ -144,7 +158,6 @@ html {
 } 
 
 .subtitle {
-    background-image: linear-gradient(#DBBEE8, #F7D7B9);
     height: 40px;
     align-content: center;
     bottom: 50px;

@@ -18,36 +18,36 @@ body {
 }
 
 .title {
-    font-family: 'Aboreto', cursive;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
-    padding-top: 35px;
-    background-color: transparent;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    right: 53px;
-    width: 1300px;
-    bottom: 50px;
-    height: 65px;
-    justify-content: center;
+  font-family: 'Aboreto', cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  /* height: 40px; */
+  height: 100px;
+  align-content: center;
+  bottom: 50px;
+  /* right: 90px; */
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0 !important;
 }
 
 .button.is-link {
     display: inline-block;
     border-radius: 4px;
-    background-color: #F7A072;
+    background-color:  #95D581;
    
   }
 
   .button.is-link:hover {
-    background-color: #dcc0e6 !important; 
+    background-color: #304F6B !important; 
     color: white;
   }
 
   #whisp {
     position: fixed;
-    opacity: 0.4;
+    opacity: 0.5;
   }
 
   .subtitle {
