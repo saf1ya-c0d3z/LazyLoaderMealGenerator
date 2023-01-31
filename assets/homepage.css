@@ -1,10 +1,4 @@
-html {
-    background: rgb(18,117,17);
-    background: linear-gradient(149deg, rgba(18,117,17,1) 0%, rgba(193,180,165,1) 35%, rgba(48,79,107,1) 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height:100%;
-}
+
 .slideshow {
     list-style-type: none;
     flex-wrap: wrap;
@@ -12,11 +6,7 @@ html {
     display: flex;
     align-items: center;
   }
-  .field is-grouped {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap; 
-  }
+  
   .control {
     position: relative;
     display: flex;
@@ -64,6 +54,7 @@ html {
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
+      
     /* height: 100%;
       width: 100%; */
       
@@ -72,7 +63,7 @@ html {
       background-image: url("./css2/assets/23042_food_w1120.jpg");
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: center;
+      background-position: center;;
      /* height: 100%;
       width: 100%;  */
       animation-delay: 6s; 
@@ -82,6 +73,7 @@ html {
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
+      background-size: auto;
      /* height: 100%;
       width: 100%; */ 
       animation-delay: 12s; 
@@ -134,8 +126,22 @@ html {
     position: fixed;
     opacity: 0.5;
   }
+  .titleContainer{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
+   bottom:65px;
+   
+  }
 
-  
+  .HomeSubmitBtn {
+    position: relative;
+    color: black !important;
+    background-color: antiquewhite !important;
+    width: 20%;
+  }
+
   .title {
     font-family: 'Aboreto', cursive;
     font-family: 'Montserrat', sans-serif;
@@ -143,7 +149,7 @@ html {
     /* height: 40px; */
     height: 100px;
     align-content: center;
-    bottom: 50px;
+   /*  bottom: 50px; */
     /* right: 90px; */
     position: relative;
     display: flex;
@@ -160,19 +166,27 @@ html {
 .subtitle {
     height: 40px;
     align-content: center;
-    bottom: 50px;
+    bottom: 40px;
     /* right: 90px; */
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
+
+/* body {
+    background-image: url("./css2/assets/wild-garlic-gfe55eb0f7_1920.jpg")
+    
+}
+
+
   /* added different images, need to ask t.A for help centering images on the screen. */
  /* .slidephoto {
    
 
 }
     
+
 
   
   
