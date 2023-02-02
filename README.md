@@ -27,13 +27,15 @@ So THAT I can stay healthy and enjoy variety in my meals.
 
 ## Usage
 Utilizing the site is simple!
+
 First, since there is a /corsd part of the YouTube Search Results API, you must go to the following link:
-* https://cors-anywhere.herokuapp.com/corsdemo
+https://cors-anywhere.herokuapp.com/corsdemo
 Hit the button that says "Request temporary access to the demo server"
 Once the page says "You currently have temporary access to the demo server", you're good to go!
 (Please do not skip this step prior to using the site, as it will not work without the temporary permission!)
+
 Next, load our deployed application by copying and pasting the following link into a browser:
-* https://saf1ya-c0d3z.github.io/LazyLoaderMealGenerator/
+https://saf1ya-c0d3z.github.io/LazyLoaderMealGenerator/
 Once the page loads, hit the "Get Started!" button.
 Once on the second page, enter your personal information including your weight and your ideal weight, then click Submit.
 Next, on the thrid page, enter your food preferences and dietary restrictions. and click Submit again!
