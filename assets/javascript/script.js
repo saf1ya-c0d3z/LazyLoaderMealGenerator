@@ -602,6 +602,6 @@ function backtoHomePage() {
     landingHeaderContainer.setAttribute("style", "display:block");
     var mainHeaderContainer = document.getElementById("initialHeader");
     mainHeaderContainer.setAttribute("style", "display:none")
-    var secondHeaderContainer = document.getElementById("finalheader");
+    var secondHeaderContainer = document.getElementById("finalHeader");
     secondHeaderContainer.setAttribute("style", "display:none");
 };
