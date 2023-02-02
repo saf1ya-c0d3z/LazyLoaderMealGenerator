@@ -2,15 +2,16 @@
 This project was designed to help employees with busy work schedules to map out their day but imputing reminders and appointments.
 By: The Lazy Loaders!
 AKA:
-David Lee 
-Sam Cott
-John (Jack) Mabie
-Safiya Shrader
+David Lee, 
+Sam Cott,
+John (Jack) Mabie,
+& Safiya Shrader
 
 ## Technologies Used
 * HTML
 * CSS
 * Bulma
+* Splide JS
 * Google Font
 * JavaScript
 * Rapid API
@@ -19,20 +20,25 @@ Safiya Shrader
 
 ## User Story
 ```
-As a person with dietary restrictions and preferences
-I want to be able to try new recipes that fall within my diet plan
-So that I can stay healthy and enjoy variety in my meals.
+AS A person with dietary restrictions and preferences
+I WANT to be able to try new recipes that fall within my diet plan
+So THAT I can stay healthy and enjoy variety in my meals.
 ```
 
 ## Usage
 Utilizing the site is simple!
-Load the site by copying and pasting the link on to a browser.
+First, since there is a /corsd part of the YouTube Search Results API, you must go to the following link:
+* https://cors-anywhere.herokuapp.com/corsdemo
+Hit the button that says "Request temporary access to the demo server"
+Once the page says "You currently have temporary access to the demo server", you're good to go!
+(Please do not skip this step prior to using the site, as it will not work without the temporary permission!)
+Next, load our deployed application by copying and pasting the following link into a browser:
 * https://saf1ya-c0d3z.github.io/LazyLoaderMealGenerator/
 Once the page loads, hit the "Get Started!" button.
-Once on the second page, enter your personal information including your weight and your ideal weight.
-Next, enter your food preferences and dietary restrictions. and click next!
-Finally, you'll be presented with a personalized recipe based on your criteria and a link on how to properly cook it!
-Once finished, hit "Get new Recipe?" to keep your information and get a new recipe or hit "Start Over?" to clear all data and start over.
+Once on the second page, enter your personal information including your weight and your ideal weight, then click Submit.
+Next, on the thrid page, enter your food preferences and dietary restrictions. and click Submit again!
+Finally, you'll be presented with a personalized recipe based on your criteria, a link on how to properly cook it and a YouTube video of someone preparing the recipe (or a close approximation of the recipe) to follow along with!
+Once finished, hit "Get New Recipe?" to keep your personal information and adjust your food preferences and/or dietary restrictions to get a new recipe, or hit "Start Over?" to clear all data and start over from the home page.
 
 ## Screenshots
 
@@ -60,7 +66,7 @@ How the first form looks now
 How the second form looks now
 ![Second Form](./assets/images/form%20page%20two.png)
 
-How the results page looks
+How the results page looks with a generated recipe
 ![Final Page](./assets/images/results%20page.png)
 
 A GIF of the full website with results working at the end
