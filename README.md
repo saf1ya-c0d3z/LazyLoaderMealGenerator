@@ -1,9 +1,88 @@
-v3, but like insanely updated since v2
+# Personalized Meal Generator
+This project was designed to help employees with busy work schedules to map out their day but imputing reminders and appointments.
+By: The Lazy Loaders!
+AKA:
+David Lee 
+Sam Cott
+John (Jack) Mabie
+Safiya Shrader
 
-currently works all the way through in terms of JS
+## Technologies Used
+* HTML
+* CSS
+* Bulma
+* Google Font
+* JavaScript
+* Rapid API
+* SerpAPI
+* Jquery
 
-still has styling issues with the homepage slideshow, with the size and centered-ness of the final page card info / youtube vidoe
+## User Story
+```
+As a person with dietary restrictions and preferences
+I want to be able to try new recipes that fall within my diet plan
+So that I can stay healthy and enjoy variety in my meals.
+```
 
-almost presentation ready though!
+## Usage
+Utilizing the site is simple!
+Load the site by copying and pasting the link on to a browser.
+* https://saf1ya-c0d3z.github.io/LazyLoaderMealGenerator/
+Once the page loads, hit the "Get Started!" button.
+Once on the second page, enter your personal information including your weight and your ideal weight.
+Next, enter your food preferences and dietary restrictions. and click next!
+Finally, you'll be presented with a personalized recipe based on your criteria and a link on how to properly cook it!
+Once finished, hit "Get new Recipe?" to keep your information and get a new recipe or hit "Start Over?" to clear all data and start over.
 
-v4 even more ready!
+## Screenshots
+
+This is the iniial wireframe design for the homepage
+![Wireframe Home Page](./assets/images/Screen%20Shot%202023-01-23%20at%208.17.44%20PM.png)
+
+This is the initial wireframe design for the first form
+![Wireframe First Form](./assets/images/Screen%20Shot%202023-01-23%20at%208.18.01%20PM.png)
+
+This is the initial wireframe design for the second form
+![Wireframe Second Form](./assets/images/Screen%20Shot%202023-01-23%20at%208.21.00%20PM.png)
+
+This is the initial wireframe design for the results/final page
+![Wireframe Final Page](./assets/images/Screen%20Shot%202023-01-23%20at%208.18.35%20PM.png)
+
+Home Page was really naked without a photo carousel
+![Home Page Empty](./assets/images/home%20page.png)
+
+Home Page GIF to show the original carousel, transitions were awkward and sizing wasn't working
+![Home Page Transition GIF](./assets/images/Personalized%20Meal%20Generator.gif)
+
+How the first form looks now
+![First Form](./assets/images/form%20page%20one.png)
+
+How the second form looks now
+![Second Form](./assets/images/form%20page%20two.png)
+
+How the results page looks
+![Final Page](./assets/images/results%20page.png)
+
+A GIF of the full website with results working at the end
+![Full Functionality GIF](./assets/images/Personalized%20Meal%20Generator%20(1).gif)
+
+## Sources
+https://ucb.bootcampcontent.com/UCB-Coding-Bootcamp/UCB-VIRT-FSF-PT-11-2022-U-LOLC
+
+https://javascriptbook.com/
+* An excellent reference to javascript and its components.
+
+https://stackoverflow.com/
+* A community of developers able to help and debug common issues I came across.
+
+https://bulma.io/
+* styling for your HTML!
+
+https://splidejs.com/
+* create functional slideshows!
+
+https://rapidapi.com/spoonacular/api/recipe-food-nutrition
+* API's!
+
+https://serpapi.com/youtube-search-api
+* API's!
