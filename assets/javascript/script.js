@@ -596,7 +596,7 @@ function backtoHomePage() {
     secondPageContainer.setAttribute("style", "display:none");
     var firstPageContainer = document.getElementById("firstPage");
     firstPageContainer.setAttribute("style", "display:none");
-    var landingPageContainer = document.getElementById("landingPage");
+    var landingPageContainer = document.querySelector(".landingPage");
     landingPageContainer.setAttribute("style", "display:block");
     var landingHeaderContainer = document.getElementById("landingHeader");
     landingHeaderContainer.setAttribute("style", "display:block");
