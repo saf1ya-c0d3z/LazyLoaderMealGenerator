@@ -603,5 +603,5 @@ function backtoHomePage() {
     var mainHeaderContainer = document.getElementById("initialHeader");
     mainHeaderContainer.setAttribute("style", "display:none")
     var secondHeaderContainer = document.getElementById("finalHeader");
-    secondHeaderContainer.setAttribute("style", "display:none");
+    secondHeaderContainer.setAttribute("style", "display:none !important");
 };
