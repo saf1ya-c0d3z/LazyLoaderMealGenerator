@@ -1,38 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Personalized Meal Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Montserrat:ital,wght@1,200&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./Assets/style.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
   </head>
+
+  <body>
+  <section>
+    <!-- updated background image to match group CSS, updated alt text to be accurate -->
+    <span><img id="whisp" src="./assets/images/background image for meal generator.jpg" alt="food preparation table with knife and ingredients to the side"></span>
+  </section>
+  <section class="section" id="landingHeader">
+    <!-- added titleContainer class to match group CSS -->
+    <div class="container titleContainer">
+        <h1 class="title">
+          <!-- updated the title to Personalized instead of Random -->
+            Personalized Meal Generator
+        </h1>
+        <p class="subtitle">
+          <!-- each subtitle should be individualized per page (both forms can have same) -->
+          <!-- added CSS styling making the <strong> tags not read spacemarks, added the &nbsp; manually for each subtitle to avoid the issue entirely -->
+            Hit the button to begin generating your own <strong>&nbsp;Personalized Meal</strong>!
+        </p>
+        <div class="field is-grouped">
+            <div class="control">
+            <button class="button is-link HomeSubmitBtn">Get Started!</button>
+            </div>
+        </div>
+    </div>
+  </section>
+  <section class="section" id="initialHeader" style="display: none;">
+    <div class="container">
+      <h1 class="title">
+        Personalized Meal Generator
+      </h1>
+      <p class="subtitle">
+        Enter your personal information to get a <strong>&nbsp;Personalized Meal</strong>!
+      </p>
+    </div>
+  </section>
+  <section class="section" id="finalHeader" style="display: none;">
+    <div class="container">
+      <h1 class="title">
+        Personalized Meal Generator
+      </h1>
+      <p class="subtitle">
+        We hope you enjoy your <strong>&nbsp;Personalized Meal</strong>!
+      </p>
+    </div>
+  </section>
+
+<!-- see if possible to break slideshow into a 80% column and add a left-side sidebar with some general information on how the website works -->
+<!--   <section class="container" id="landingPage">
+    <ul class="slideshow">
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+      <li class = "slidephoto"><span></span></li>
+    </ul>
+  </section> -->
   
-<body>
+  <section id="image-carousel" class="splide landingPage" aria-label="Beautiful Images">
+    <div class="splide__track is-flex">
+      <ul class="splide__list is-flex">
+        <li class="splide__slide">
+          <img src="./assets/images/acai bowl image.jpg" alt="acai bowl">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/soup with egg.jpg" alt="egg soup">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/the sush is loosh.jpeg" alt="sushi platter">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/croissant fromage.jpg" alt="croissant">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/two plates of lobster image.jpg" alt="two plats of lobster">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/smoothie bowl image.jpg" alt="smoothie bowl">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/burgahtime.jpg" alt="cheeseburger">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/pancakes.jpg" alt="pancakes">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/traditional thai appetizer image.jpg" alt="thai appetizer">
+        </li>
+        <li class="splide__slide">
+          <img src="./assets/images/omglul so random xD image.jpg" alt="Dwight Schrute">
+        </li>
+      </ul>
+    </div>
+  </section>
 
-</body>
+  <section class="container" id="firstPage" style="display: none;">
+    <!-- creates text input field for Name -->
+    <div class="field" id="UserName">
+        <label class="label">Name</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="Randy Randleman" type="text" optional></textarea>
+        </div>
+    </div>
 
+    <!-- creates text input field for Age -->
+    <div class="field" id="UserAge">
+        <label class="label">Age</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="74" type="text" optional></textarea>
+        </div>
+    </div>
 
+    <!-- creates text input field for Height -->
+    <div class="field" id="UserHeight">
+        <label class="label">Height</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="6'4" type="text" optional></textarea>
+        </div>
+    </div>
 
-  <!-- JS -->
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserCurrentWeight">
+        <label class="label">Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="285" type="number" required></textarea>
+        </div>
+        <p class="help is-danger">This field is required, please add numeric value!</p>
+    </div>
+
+    <!-- creates text input field for Weight -->
+    <div class="field" id="UserIdealWeight">
+        <label class="label">Ideal Weight</label>
+        <div class="control">
+            <textarea class="input" rows="3" placeholder="240" type="number" required></textarea>
+        </div>
+        <p class="help is-danger">This field is required, please add numeric value!</p>
+    </div>
+
+    <!-- creates dropdown menu for Gender -->
+    <div class="field" id="UserGender">
+        <label class="label">Select Gender</label>
+        <div class="control">
+        <div class="select">
+            <select>
+                <option value="man">Man</option>
+                <option value="woman">Woman</option>
+                <option value="nonbinary">Non-Binary</option>
+                <option value="transman">Trans Man</option>
+                <option value="transwoman">Trans Woman</option>
+            </select>
+        </div>
+        </div>
+    </div>
+
+    <!-- creates buttons for Submit and for Cancel -->
+    <div class="field is-grouped">
+        <div class="control">
+        <button class="button is-link SubmitBtn">Submit</button>
+        </div>
+        <div class="control">
+        <button class="button is-link is-light CancelBtn">Cancel</button>
+        </div>
+    </div>
+  </section>
+
+  <section class="container" id="secondPage" style="display: none;">
+    <!-- creates input for which meal of the day, probably drop down menu -->
+    <div class="field" id="UserMeal">
+      <label class="label">Select Meal Type</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="breakfast">Breakfast</option>
+              <option value="main%20course">Lunch</option>
+              <option value="main%20course">Dinner</option>
+              <option value="appetizer">Appetizer</option>
+              <option value="side%20dish">Side Dish</option>
+              <option value="dessert">Dessert</option>
+              <option value="drink">Drink</option>
+          </select>
+      </div>
+      </div>
+    </div>    
+    <!-- creates input for which cuisine, probably text area -->
+    <div class="field" id="UserCuisine">
+      <label class="label">What kind of food would you like?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="chinese"></textarea>
+      </div>
+    </div>
+    <!-- creates input for ingredients, probably text area -->
+    <div class="field" id="UserIngredients">
+      <label class="label">Do you have any ingredients you'd like to use?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="lettuce,tomato,onion"></textarea>
+      </div>
+    </div>
+    <!-- creates input for specific diets, probably drop down menu -->
+    <div class="field" id="UserDiet">
+      <label class="label">Do you follow a specific Diet?</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="nodiet">No Diet</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="pescatarian">Pescatarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="paleo">Paleo</option>
+              <option value="primal">Primal</option>
+          </select>
+      </div>
+      </div>
+    </div>
+    <!-- creates input for dietary restrictions/allergies, probably text area -->
+    <div class="field" id="UserAllergies">
+      <label class="label">Do you have any dietary restrictions or allergies?</label>
+      <div class="control">
+          <textarea class="input" rows="3" placeholder="shellfish,gluten"></textarea>
+      </div>
+    </div>
+    <!-- creates input for nutritional info, best as a drop-down list -->
+    <div class="field" id="UserNutrition">
+      <label class="label">Do you have any specification for the nutritional content of your meal?</label>
+      <div class="control">
+      <div class="select">
+          <select>
+              <option value="nospecification">No Specifications</option>
+              <option value="low-fat">Low Fat</option>
+              <option value="low-sugar">Low Sugar</option>
+              <option value="nosugar">Sugar Free</option>
+              <option value="high-protein">High Protein</option>
+              <option value="low-carb">Low Carb</option>
+              <option value="keto">Ketogenic</option>
+          </select>
+      </div>
+      </div>
+    </div>
+    <!-- creates buttons for Submit and for Cancel -->
+    <div class="field is-grouped">
+      <div class="control">
+      <button class="button is-link SecondSubmitBtn">Submit</button>
+      </div>
+      <div class="control">
+      <button class="button is-link is-light SecondCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="thirdPage" style="display: none;">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-384x384" id="recipeimg">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4" id="recipename">Recipe Name</p>
+            <p class="subtitle is-6" id="recipelink">Recipe Link</p>
+            <p class="subtitle is-6" id="recipeinfo">Recipe Info</p>
+            <p class="subtitle is-6" id="recipeservings">Recipe servings</p>
+          </div>
+        </div>
+        <!-- <div class="content" id="recipeinfo">
+          Some basic information about your resulting recipe, such as Calories, Carbs, Fats & Proteins
+        </div>
+        <div class="content" id="recipeservings">
+          This recipe makes a certain number of servings
+        </div> -->
+        <div class="field is-grouped">
+          <div class="control">
+          <button class="button is-link newRecipeBtn">Get New Recipe?</button>
+          </div>
+          <div class="control">
+          <button class="button is-link is-light startOverBtn">Start Over?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video" id="youtubevideo"></div>
+  </section>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script
-      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-      crossorigin="anonymous"
-    ></script>
-  <script type="text/javascript" src="Assets/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script>
+    new Splide( '#image-carousel' ).mount();
+  </script>
+  <script src="./assets/javascript/script.js"></script>
+  </body>
 
 </html>
