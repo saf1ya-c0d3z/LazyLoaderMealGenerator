@@ -1,0 +1,253 @@
+/* .slideshow {
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+} */
+
+img, video {
+    height: auto;
+    max-width: max-content !important;
+}
+  
+.control {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* need to adjust sizing. added new pictures */
+
+#landingPage {
+    position: relative;
+    /* height:60%;
+    top: 200px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* .slideshow li span { 
+    position: fixed; 
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 0px;
+    color: transparent;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 60s linear infinite 0s; 
+}
+  
+.slideshow li:nth-child(1) span { 
+    background-image: url("../images/acai\ bowl\ image.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.slideshow li:nth-child(2) span { 
+    background-image: url("../images/two\ plates\ of\ lobster\ image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 6s; 
+}
+
+.slideshow li:nth-child(3) span { 
+    background-image: url("../images/smoothie\ bowl\ image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 12s; 
+}
+
+.slideshow li:nth-child(4) span { 
+    background-image: url("../images/burgahtime.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 18s; 
+}
+
+.slideshow li:nth-child(5) span { 
+    background-image: url("../images/traditional\ thai\ appetizer\ image.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 24s; 
+}
+
+.slideshow li:nth-child(6) span {
+    background-image: url("../images/soup\ with\ egg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 30s;
+}
+
+.slideshow li:nth-child(7) span {
+    background-image: url("../images/croissant\ fromage.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 36s;
+}
+
+.slideshow li:nth-child(8) span {
+    background-image: url("../images/the\ sush\ is\ loosh.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 42s;
+}
+
+.slideshow li:nth-child(9) span {
+    background-image: url("../images/pancakes.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 48s;
+}
+
+.slideshow li:nth-child(10) span {
+    background-image: url("../images/omglul\ so\ random\ xD\ image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    animation-delay: 54s;
+}
+
+@keyframes imageAnimation { 
+      0% { opacity: 0; animation-timing-function: ease-in; }
+      5% { opacity: 1 }
+      20% { opacity: 1; animation-timing-function: ease-out; }
+      25% { opacity: 0 }
+      100% { opacity: 0 }
+}
+  
+.no-cssanimations .cb-slideshow li span {
+      opacity: 1;
+} */
+
+/* new code */
+#whisp {
+    position: fixed;
+    opacity: 0.5;
+    height: 100vw;
+    width: 100vw;
+}
+
+/* find this */
+.titleContainer{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
+}
+
+.HomeSubmitBtn {
+    position: relative;
+    color: black !important;
+    background-color: antiquewhite !important;
+}
+
+
+.button.is-link {
+    display: inline-block;
+    border-radius: 4px;
+    background-color:  lightgreen;
+    color: black;
+}
+
+.button.is-link:hover {
+    background-color: #304F6B !important; 
+    color: white !important;
+}
+
+.button.is-link.is-light {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(162, 202, 162);
+    color: black;
+}
+
+.button.is-link.is-light:hover {
+    background-color: teal !important;
+    color: white !important;
+}
+
+.title {
+    font-family: 'Aboreto', cursive;
+    font-size: 40px;
+    height: 100px;
+    align-content: center;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0 !important;
+}
+
+.container {
+    background: #F9F7F3 ;
+    background-color: transparent;
+} 
+
+.subtitle {
+    height: 40px;
+    align-content: center;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.title.is-4 {
+    font-size: 1.5rem;
+    align-content: flex-start;
+    justify-content: left;
+    height: 50px;
+}
+
+.subtitle.is-6 {
+    font-size: 1rem;
+    align-content: flex-start;
+    justify-content: left;
+}
+
+.video {
+    display:flex;
+    justify-content: center;
+}
+
+textarea:optional {
+    border-color: grey;
+}
+
+textarea:required {
+    border-color: blue;
+}
+
+textarea:invalid {
+    border-color: red;
+}
+
+textarea:valid {
+    border-color: green;
+}
+
+.splide__slide {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.splide__slide img {
+    width: 100%;
+    height: auto;
+}
