@@ -1,5 +1,5 @@
 # Personalized Meal Generator
-This project was designed to help employees with busy work schedules to map out their day but imputing reminders and appointments.
+This project was designed to help people with busy schedules find recipes that fit their body, their weight goals, their dietary restrictions and their cravings, all with a single search.
 By: The Lazy Loaders!
 AKA:
 David Lee, 
