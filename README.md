@@ -69,7 +69,7 @@ How the second form looks now
 ![Second Form](./assets/images/form%20page%20two.png)
 
 How the results page looks with a generated recipe
-![Final Page](./assets/images/results%20page.png)
+<img width="1440" alt="Screen Shot 2023-02-03 at 11 07 46 AM" src="https://user-images.githubusercontent.com/118941179/216686838-95cc5c45-b901-43b4-aad2-bdbb3669447e.png">
 
 A GIF of the full website with results working at the end
 ![Full Functionality GIF](./assets/images/Personalized%20Meal%20Generator%20(1).gif)
